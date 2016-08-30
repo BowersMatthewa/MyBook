@@ -80,7 +80,7 @@ public class MyBook
 		if(newIsbn10.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
 			isbn10 = newIsbn10;
 		else 
-			throw new IllegalArgumentException("Expected 10 digit number for isbn10.");
+			throw new IllegalArgumentException("ISBN10 must be a 10 digit number.");
 	}
 	
 	public void setIsbn13(String newIsbn13) throws IllegalArgumentException
@@ -89,7 +89,7 @@ public class MyBook
 		if(newIsbn13.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
 			isbn13 = newIsbn13;
 		else 
-			throw new IllegalArgumentException("Expected 13 digit number for isbn13.");
+			throw new IllegalArgumentException("ISBN13 must be a 13 digit number.");
 	}
 	
 	//checks to see if two Objects are the same book

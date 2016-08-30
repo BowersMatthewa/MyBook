@@ -133,6 +133,19 @@ public class MyBookTester
 		System.out.println("the first book:\n" + book0);
 		System.out.println("the second book:\n" + book1);
 		checkSymmetry(book0, book1);
+		
+		System.out.println("\nTesting getters");
+		System.out.println("Testing getTitle");
+		System.out.println(book1.getTitle());
+		System.out.println("\nTesting getAuthorFirstName");
+		System.out.println(book1.getAuthorFirstName());
+		System.out.println("\nTesting getAuthroLastName");
+		System.out.println(book1.getAuthorLastName());
+		System.out.println("\nTesting getIsbn10");
+		System.out.println(book1.getIsbn10());
+		System.out.println("\nTesting getIsbn13");
+		System.out.println(book1.getIsbn13());
+		
 	}
 	
 	private static void getHeader()

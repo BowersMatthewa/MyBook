@@ -26,6 +26,7 @@ public class MyBook
 		this.title = title;
 		this.authorFirstName = authorFirstName;
 		this.authorLastName = authorLastName;
+		//setters used so that appropriate exceptions will be thrown
 		setIsbn10(isbn10);
 		setIsbn13(isbn13);
 	}

@@ -82,6 +82,12 @@ public class MyBookTester
 		System.out.println("the second book:\n" + book1);
 		checkSymmetry(book0, book1);
 		
+		System.out.println("\nTesting equals with aliases");
+		book0 = book1;
+		System.out.println("the first book:\n" + book0);
+		System.out.println("the second book:\n" + book1);
+		checkSymmetry(book0, book1);
+		
 		System.out.println("\nTesting equals with 2 default books");
 		System.out.println("Generating 2 new Books...");
 		MyBook book2 = new MyBook();
@@ -146,6 +152,20 @@ public class MyBookTester
 		System.out.println("\nTesting getIsbn13");
 		System.out.println(book1.getIsbn13());
 		
+		System.out.println("\nTesting that equals returns false if a nonMyBook object is passed");
+		System.out.println(book1.equals("seventeen"));
+		
+		System.out.println("\nTest that exception is thrown if bad ISBN numbers are passed to the constructor");
+		try{
+			book0 = new MyBook("title", "Matthew", "Bowers", "012", "0123456789012");
+		}catch(IllegalArgumentException exception){
+			exception.printStackTrace();
+		}
+		try{
+			book0 = new MyBook("title", "Matthew", "Bowers", "0123456789", "0123456789");
+		}catch(IllegalArgumentException exception){
+			exception.printStackTrace();
+		}
 	}
 	
 	private static void getHeader()

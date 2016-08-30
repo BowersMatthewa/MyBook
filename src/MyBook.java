@@ -6,8 +6,6 @@
 //a book.
 //-----------------------------------------------------------
 
-import java.util.regex.Pattern;
-import java.lang;
 
 public class MyBook 
 {
@@ -119,8 +117,8 @@ public class MyBook
 	//returns a formatted string with the instance data
 	public String toString()
 	{
-		String bookAsString = title + "/nAuthor: " + authorLastName + ", " + authorFirstName + 
-				"/nISBN10: " + isbn10 + "/nISBN13: " + isbn13;
+		String bookAsString = "Title: " + title + "\nAuthor: " + authorLastName + ", " + authorFirstName + 
+				"\nISBN10: " + isbn10 + "\nISBN13: " + isbn13;
 		
 		return bookAsString;
 	}

@@ -88,9 +88,19 @@ public class MyBookTester
 		System.out.println("the second book:\n" + book1);
 		checkSymmetry(book0, book1);
 		
+		System.out.println("\nTesting that equals is transitive.");
+		System.out.println("Creating 3 books.");
+		book0= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
+		book1= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
+		MyBook book2= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
+		System.out.println("The first book is the same as the second book: " + book0.equals(book1) 
+			+ ". The second book is the same as the third book: " + book1.equals(book2) 
+			+ "Therefore, the first book is the same as the third book: " + book0.equals(book2));
+		
+		
 		System.out.println("\nTesting equals with 2 default books");
 		System.out.println("Generating 2 new Books...");
-		MyBook book2 = new MyBook();
+		book2 = new MyBook();
 		MyBook book3 = new MyBook();
 		System.out.println("the first book:\n" + book2);
 		System.out.println("the second book:\n" + book3);

@@ -23,10 +23,10 @@ public class MyBook
 	public	MyBook(String title, String	authorFirstName, String authorLastName,	
 			String isbn10, String isbn13)
 	{
-		this.title = title;
-		this.authorFirstName = authorFirstName;
-		this.authorLastName = authorLastName;
 		//setters used so that appropriate exceptions will be thrown
+		setTitle(title);
+		setAuthorFirstName(authorFirstName);
+		setAuthorLastName(authorLastName);
 		setIsbn10(isbn10);
 		setIsbn13(isbn13);
 	}
@@ -60,37 +60,52 @@ public class MyBook
 	
 	//setters for each variable
 	
-	public void setTitle(String newTitle)
+	public void setTitle(String newTitle) throws IllegalArgumentException
 	{
-		title = newTitle;
+		if(newTitle != null)
+			title = newTitle;
+		else
+			throw new IllegalArgumentException("Title may not be null");
 	}
 	
-	public void setAuthorLastName(String newLastName)
+	public void setAuthorLastName(String newLastName) throws IllegalArgumentException
 	{
-		authorLastName = newLastName;
+		if(newLastName != null)
+			authorLastName = newLastName;
+		else
+			throw new IllegalArgumentException("AuthorLastName may not be null");
 	}
 	
-	public void setAuthorFirstName(String newFirstName)
+	public void setAuthorFirstName(String newFirstName) throws IllegalArgumentException
 	{
-		authorFirstName = newFirstName;
+		if(newFirstName != null)
+			authorFirstName = newFirstName;
+		else
+			throw new IllegalArgumentException("AuthorFirstName may not be null");
 	}
 	
 	public void setIsbn10(String newIsbn10) throws IllegalArgumentException
 	{
 		//makes sure what is left is a 10 digit number
-		if(newIsbn10.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
-			isbn10 = newIsbn10;
-		else 
-			throw new IllegalArgumentException("ISBN10 must be a 10 digit number.");
+		if(newIsbn10 != null)
+			if(newIsbn10.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
+				isbn10 = newIsbn10;
+			else 
+				throw new IllegalArgumentException("ISBN10 must be a 10 digit number.");
+		else
+			throw new IllegalArgumentException("ISBN10 must not be null");
 	}
 	
 	public void setIsbn13(String newIsbn13) throws IllegalArgumentException
 	{
 		//makes sure what is left is a 13 digit number
-		if(newIsbn13.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
-			isbn13 = newIsbn13;
-		else 
-			throw new IllegalArgumentException("ISBN13 must be a 13 digit number.");
+		if(newIsbn13 != null)
+			if(newIsbn13.matches("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d"))
+				isbn13 = newIsbn13;
+			else 
+				throw new IllegalArgumentException("ISBN13 must be a 13 digit number.");
+		else
+			throw new IllegalArgumentException("ISBN13 must not be null");
 	}
 	
 	//checks to see if two Objects are the same book
@@ -105,13 +120,9 @@ public class MyBook
 		else if(this == otherBook)
 			result = true;
 		//failing that check that each piece of instance data is the same
-		else if((title.equals(((MyBook)otherBook).getTitle())))
-			if((authorLastName.equals(((MyBook)otherBook).getAuthorLastName())))
-				if((authorFirstName.equals(((MyBook)otherBook).getAuthorFirstName())))
-					if((isbn10.equals(((MyBook)otherBook).getIsbn10())))
-						if((isbn13.equals(((MyBook)otherBook).getIsbn13())))
-							result = true;
-		
+		else if((isbn10.equals(((MyBook)otherBook).getIsbn10())))
+			if((isbn13.equals(((MyBook)otherBook).getIsbn13())))
+				result = true;
 		return result;
 	}
 	

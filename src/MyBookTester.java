@@ -5,177 +5,210 @@ public class MyBookTester
 	{
 		getHeader();
 		
-		System.out.println("Testing default constructor");
-		MyBook book0 = new MyBook();
+		MyBook[] books = new MyBook[20];
+		int i = 0;
+		
+		System.out.println("\nConstructor testing. Also tests set methods.");
+		System.out.println("Testing default constructor and toString");
+		books[i++] = new MyBook();
+		System.out.println(books[0]);
+		System.out.println("New Book created without error.");
+		try{
+			System.out.println("\nTesting constructor with allowable parameters");
+			books[i++] = new MyBook("The Way of Kings", "Brandon", "Sanderson", "0765365278", "9780765365279");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with identical allowable parameters");
+			books[i++] = new MyBook("The Way of Kings", "Brandon", "Sanderson", "0765365278", "9780765365279");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with allowable parameters");
+			books[i++] = new MyBook("Words of Radiance", "Brandon", "Sanderson", "0575093323", "9780765365286");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with allowable parameters");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "0380002930", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with null title");
+			books[i++] = new MyBook(null, "Richard", "Adams", "0380002930", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with null first name");
+			books[i++] = new MyBook("Watership Down", null, "Adams", "0380002930", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with null last name");
+			books[i++] = new MyBook("Watership Down", "Richard", null, "0380002930", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with null ISBN10");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", null, "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with short ISBN10");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "123456789", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with letter in ISBN10");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "asdfghjklq", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with null ISBN13");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "1234567890", null);
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with short ISBN13");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "1234567890", "978074327770");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with long ISBN13");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "1234567890", "978074327770123");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
+			System.out.println("\nTesting constructor with letter in ISBN13");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "1234567890", "asdfghjklqwer");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		
+		System.out.println("\nTesting equals method. \nTesting reflexivity.");
+		MyBook book0 = books[1];
+		MyBook book1 = books[2];
+		
+		test(book0, book1);
+		
+		System.out.println("\nTesting equals method on 2 identical books");
+		test(book0, book1);
+		
+		System.out.println("\nTesting equals method on aliases");
+		book1 = book0;
+		test(book0, book1);
+		
+		System.out.println("\nTesting equals on 2 entirely different books.");
+		book0 = books[0];
+		book1 = books[1];
+		test(book0, book1);
+		
+		System.out.println("\nTesting equals on 2 books with identical information but different titles.");
+		System.out.println("Also testing getTitle.");
+		book0 = books[1];
+		book1 = books[2];
+		book1.setTitle(books[3].getTitle());
+		test(book0, book1);
+		System.out.println("Resetting title...");
+		book1.setTitle("Way of Kings");
+		
+		System.out.println("\nTesting equals on 2 books with identical information but different FirstName.");
+		System.out.println("Also testing getAuthorFirstName");
+		book0 = books[1];
+		book1 = books[2];
+		book1.setAuthorFirstName(books[4].getAuthorFirstName());
+		test(book0, book1);
+		System.out.println("Even though " + book0.getTitle() + " was written by: " + book0.getAuthorFirstName() + " "
+				+ book0.getAuthorLastName() + " and " + book1.getTitle() + " was written by: " + book1.getAuthorFirstName()
+				+ " " + book1.getAuthorLastName());
+		System.out.println("Resetting author name...");
+		book1.setAuthorFirstName("Brandon");
+		
+		System.out.println("\nTesting equals on 2 books with identical information but differnt LastName");
+		System.out.println("Also testing getAuthorLastName.");
+		book1.setAuthorLastName(books[4].getAuthorLastName());
+		test(book0, book1);
+		System.out.println("Even though " + book0.getTitle() + " was written by: " + book0.getAuthorFirstName() + " "
+				+ book0.getAuthorLastName() + " and " + book1.getTitle() + " was written by: " + book1.getAuthorFirstName()
+				+ " " + book1.getAuthorLastName());
+		System.out.println("Resetting author name...");
+		book1.setAuthorLastName("Sanderson");
+		
+		System.out.println("\nTesting equals on 2 books with identical information but different ISBN10");
+		System.out.println("Also testing getIsbn10.");
+		book1.setIsbn10(books[4].getIsbn10());
+		test(book0, book1);
+		System.out.println("Resetting ISBN10.");
+		book1.setIsbn10("0765365278");
+		
+		System.out.println("\nTesting equals on 2 books with idential information but differnt ISBN13");
+		System.out.println("Also testing getIsbn13.");
+		String temp = book1.getIsbn13();
+		book1.setIsbn13(books[4].getIsbn13());
+		test(book0, book1);
+		System.out.println("Resetting ISBN13");
+		book1.setIsbn13(temp);
+		
+		System.out.println("\nTesting equals for symmetry. With identical books.");
+		System.out.println("book0.equals(book1) is "+ book0.equals(book1) + " and book1.equals(book0) is "
+				+ book1.equals(book0));	
+		
+		System.out.println("\nTesting equals for symmetry. With different books.");
+		book1= books[4];
+		System.out.println("book0.equals(book1) is "+ book0.equals(book1) + " and book1.equals(book0) is "
+					+ book1.equals(book0));
+		
+		System.out.println("\nTesting for transitivity.");
+		book0 = books[1];
+		book1 = books[2];
+		MyBook book2 = new MyBook("Another book with the same ISBN", book0.getAuthorFirstName(), book0.getAuthorLastName(), 
+				book0.getIsbn10(), book0.getIsbn13());
+		System.out.println("book0.equals(book1) is " + book0.equals(book1) + ". book1.equals(book2) is " + book1.equals(book2) 
+			+ ". book0.equals(book2) is " + book0.equals(book2));
 		
 		System.out.println("\nTesting toString");
-		System.out.println(book0);		
-		
-		System.out.println("Testing setIsbn10");
-		System.out.println("setting isbn10 to o123456789.");
-		try{
-			book0.setIsbn10("o123456789");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		System.out.println("setting isbn10 to 0123456789.");
-		try{
-			book0.setIsbn10("0123456789");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		System.out.println(book0);
-		System.out.println("setting isbn10 to 012345678.");
-		try{
-			book0.setIsbn10("012345678");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		
-		System.out.println("\nTesting setIsbn13");
-		System.out.println("setting isbn13 to o123456789012.");
-		try{
-			book0.setIsbn13("o123456789012");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		System.out.println("setting isbn13 to 0123456789012.");
-		try{
-			book0.setIsbn13("0123456789012");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		System.out.println(book0);
-		System.out.println("setting isbn13 to 012345678.");
-		try{
-			book0.setIsbn13("012345678");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		
-		System.out.println("\nTesting overload constructor");
-		MyBook book1 = new MyBook("Book1", "Matthew", "Bowers", "0123456789", "0123456789012");
 		System.out.println(book1);
-		
-		
-		System.out.println("\nTesting setAuthorFirstName and setAuthorLastName");
-		book1.setAuthorFirstName("Bob");
-		System.out.println("Author should now display as \"Bowers, Bob\"");
-		System.out.println(book1);
-		book1.setAuthorLastName("Franks");
-		System.out.println("\nAuthor should now display as \"Franks, Bob\"");
-		System.out.println(book1);
-		
-		System.out.println("\nTesting setTitle");
-		book1.setTitle("A new day, A new Title");
-		System.out.println("Title should now display as \"A new day, A new Title\"");
-		System.out.println(book1);
-		
-		System.out.println("\nTesting equals for reflexivity");
-		if(book1.equals(book1))
-			System.out.println("book1 == book1. equals() is reflexive.");
-		else
-			System.out.println("book1 ~= book1. equals() is not reflexive.");
-		
-		System.out.println("\nTesting equals with different books");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nTesting equals with aliases");
-		book0 = book1;
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nTesting that equals is transitive.");
-		System.out.println("Creating 3 books.");
-		book0= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
-		book1= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
-		MyBook book2= new MyBook("Title", "Matthew", "Bowers", "1234567890", "1234567890000");
-		System.out.println("The first book is the same as the second book: " + book0.equals(book1) 
-			+ ". The second book is the same as the third book: " + book1.equals(book2) 
-			+ "Therefore, the first book is the same as the third book: " + book0.equals(book2));
-		
-		
-		System.out.println("\nTesting equals with 2 default books");
-		System.out.println("Generating 2 new Books...");
-		book2 = new MyBook();
-		MyBook book3 = new MyBook();
-		System.out.println("the first book:\n" + book2);
-		System.out.println("the second book:\n" + book3);
-		System.out.println("Checking if they are the same...");
-		checkSymmetry(book2, book3);
-		
-		System.out.println("\nTesting equals with 2 constructed books with the same asset values");
-		System.out.println("Generating 2 books");
-		book0 = new MyBook("title", "Matthew", "Bowers", "0123456789", "0123456789012");
-		book1 = new MyBook("title", "Matthew", "Bowers", "0123456789", "0123456789012");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		System.out.println("Checking if they are the same...");
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nRepeat but change title");
-		book0.setTitle("newTitle");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nPut the title back change authorFirstName");
-		book0.setTitle("title");
-		book0.setAuthorFirstName("Bob");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nput first name back change last name");
-		book0.setAuthorFirstName("Matthew");
-		book0.setAuthorLastName("Franks");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nput last name back change isbn10");
-		book0.setAuthorLastName("Bowers");
-		book0.setIsbn10("1234567890");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nput isbn10 back change isbn13");
-		book0.setIsbn10("0123456789");
-		book0.setIsbn13("1234567890123");
-		System.out.println("the first book:\n" + book0);
-		System.out.println("the second book:\n" + book1);
-		checkSymmetry(book0, book1);
-		
-		System.out.println("\nTesting getters");
-		System.out.println("Testing getTitle");
-		System.out.println(book1.getTitle());
-		System.out.println("\nTesting getAuthorFirstName");
-		System.out.println(book1.getAuthorFirstName());
-		System.out.println("\nTesting getAuthroLastName");
-		System.out.println(book1.getAuthorLastName());
-		System.out.println("\nTesting getIsbn10");
-		System.out.println(book1.getIsbn10());
-		System.out.println("\nTesting getIsbn13");
-		System.out.println(book1.getIsbn13());
-		
-		System.out.println("\nTesting that equals returns false if a nonMyBook object is passed");
-		System.out.println(book1.equals("seventeen"));
-		
-		System.out.println("\nTest that exception is thrown if bad ISBN numbers are passed to the constructor");
-		try{
-			book0 = new MyBook("title", "Matthew", "Bowers", "012", "0123456789012");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
-		try{
-			book0 = new MyBook("title", "Matthew", "Bowers", "0123456789", "0123456789");
-		}catch(IllegalArgumentException exception){
-			exception.printStackTrace();
-		}
 	}
 	
 	private static void getHeader()
@@ -187,16 +220,11 @@ public class MyBookTester
 				" to set and get each of these variables.");
 	}
 	
-	private static void checkSymmetry(MyBook book0, MyBook book1)
+	private static void test(MyBook book0, MyBook book1)
 	{
 		if(book0.equals(book1))
-			System.out.println("the first book is the same book as the second book");
+			System.out.println(book0 + "\nis the same book as\n" + book1);
 		else
-			System.out.println("the first book is not the same book as the second book");
-		//Symmetry 
-		if(book1.equals(book0))
-			System.out.println("the second book is the same book as the first book");
-		else
-			System.out.println("the second book is not the same book as the first book");
+			System.out.println(book0 + "\nis the not the same book as\n" + book1);
 	}
 }

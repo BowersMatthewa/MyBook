@@ -86,6 +86,14 @@ public class MyBookTester
 			System.out.println(exception.getMessage());
 		}
 		try{
+			System.out.println("\nTesting constructor with long ISBN10");
+			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "12345678900", "9780743277709");
+			System.out.println(books[i - 1] + " created without error.");
+		}catch(IllegalArgumentException exception){
+			System.out.println("exception found");
+			System.out.println(exception.getMessage());
+		}
+		try{
 			System.out.println("\nTesting constructor with letter in ISBN10");
 			books[i++] = new MyBook("Watership Down", "Richard", "Adams", "asdfghjklq", "9780743277709");
 			System.out.println(books[i - 1] + " created without error.");
@@ -206,6 +214,10 @@ public class MyBookTester
 				book0.getIsbn10(), book0.getIsbn13());
 		System.out.println("book0.equals(book1) is " + book0.equals(book1) + ". book1.equals(book2) is " + book1.equals(book2) 
 			+ ". book0.equals(book2) is " + book0.equals(book2));
+		
+		
+		System.out.println("\nTesting equals with null.");
+		System.out.println(book0 + "\nis the same as null? " + book0.equals(null));
 		
 		System.out.println("\nTesting toString");
 		System.out.println(book1);

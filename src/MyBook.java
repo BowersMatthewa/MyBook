@@ -16,8 +16,8 @@ public class MyBook
 		title = "None Given";
 		authorFirstName = "None Given";
 		authorLastName = "None Given";
-		isbn10 = "None Given";
-		isbn13 = "None given";
+		isbn10 = "0000000000";
+		isbn13 = "0000000000000";
 	}
 	
 	public	MyBook(String title, String	authorFirstName, String authorLastName,	
